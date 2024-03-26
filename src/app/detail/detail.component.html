@@ -1,0 +1,80 @@
+<div class="detail-container" >
+  <app-loading></app-loading>
+  <div @fade *ngIf="!(isLoading$ | async)" class="detail-view">
+    <button backButton class="back-btn">
+      <mat-icon fontIcon="keyboard_arrow_left" class="btn-icon" color="primary"></mat-icon><span>Go back</span>
+    </button>
+    <header class="detail-view-header">
+      <span class="status-label"> Payment Status</span>
+      <app-status *ngIf="invoice.status" [status]="invoice.status"></app-status>
+    </header>
+    <div class="invoice-output">
+      <div class="top">
+        <div class="invoice-data">
+          <div class="id-container">
+            <span class="hashTag">#</span><span class="id">{{ invoice.id | sortchars }}</span>
+          </div>
+
+        </div>
+      </div>
+      <div class="main-info">
+        <div class="dates">
+          <div class="invoice-date">
+            <div class="inv-label">Invoice Date</div>
+            <div class="important-text">
+              {{ invoice.invoiceDate | date : "dd MMM y" }}
+            </div>
+          </div>
+        </div>
+
+        <div class="payday">
+          <div *ngIf="($bp | async) === 'mobile'; else table" class="row-area">
+            <div class="row" *ngFor="let item of invoice.items">
+              <div class="item">
+                <div class="name">{{ item.name }}</div>
+                <div class="info">
+                  <span class="quantity">{{ item.quantity }}</span>
+                  x
+                  <span class="price">{{ item.price | currency }}</span>
+                </div>
+              </div>
+              <div class="total-price">
+                {{ item.price * item.quantity | currency }}
+              </div>
+            </div>
+          </div>
+          <div class="grand-total-area">
+            <span class="grand-total-label">Amount Due</span>
+            <span class="grand-total">{{
+              invoice.items | convertItems | addnums | currency
+              }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <footer *ngIf="($bp | async) === 'mobile'" class="detail-view-footer">
+    <ng-container *ngTemplateOutlet="buttons"></ng-container>
+  </footer> -->
+</div>
+
+
+
+<ng-template #table>
+  <table class="payday-table">
+    <tr>
+      <th class="item-name-header">Item Name</th>
+      <th>QTY.</th>
+      <th class="price-header">Price</th>
+      <th class="total-header">Total</th>
+    </tr>
+    <tr *ngFor="let item of invoice.items">
+      <td>{{ item.name }}</td>
+      <td class="qty-cell">{{ item.quantity }}</td>
+      <td class="price-cell">{{ item.price | currency }}</td>
+      <td class="total-cell">
+        {{ item.price * item.quantity | currency }}
+      </td>
+    </tr>
+  </table>
+</ng-template>

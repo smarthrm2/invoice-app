@@ -1,0 +1,71 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+@use "../../../styles/themes/palette";
+
+$palette: mat.define-palette(palette.$md-custom-primary);
+$color: map.get($palette, 500);
+
+.inv-card {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 1.45rem 2.4rem;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+  font-size: 1.2rem;
+  line-height: normal;
+  cursor: pointer;
+  transition: all 0.1s;
+  letter-spacing: -0.25px;
+  grid-gap: 2.3rem;
+
+  & .total {
+    text-align: right;
+  }
+
+
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow: 0px 0px 0px 2px $color,
+        0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+      transition: box-shadow 0.1s;
+    }
+  }
+
+  span {
+    flex: 1;
+    &:not(.status) {
+      padding-top: 3px;
+    }
+  }
+}
+
+.id {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.total {
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: -0.8px;
+}
+
+.hashTag {
+  color: palette.$theme-mode-colour;
+}
+
+.status-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+}

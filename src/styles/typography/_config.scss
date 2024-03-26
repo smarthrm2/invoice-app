@@ -1,0 +1,53 @@
+@use "@angular/material" as mat;
+
+$ff: "'Spartan', sans-serif";
+
+$main-typography: mat.define-typography-config(
+  $headline-1:
+    mat.define-typography-level(
+      32px,
+      $font-family: $ff,
+      $font-weight: 700,
+      $line-height: 36px,
+      $letter-spacing: -1px
+    ),
+  $headline-5:
+    mat.define-typography-level(
+      32px,
+      $font-family: $ff,
+      $font-weight: 700,
+      $line-height: 36px,
+      $letter-spacing: -1px
+    ),
+  $headline-6:
+    mat.define-typography-level(
+      24px,
+      $font-family: $ff,
+      $font-weight: 700,
+      $line-height: 36px,
+      $letter-spacing: -0.5px
+    ),
+  $subtitle-1:
+    mat.define-typography-level(
+      16px,
+      $font-family: $ff,
+      $font-weight: 700,
+      $line-height: 15px,
+      $letter-spacing: -0.25px
+    ),
+  $body-1:
+    mat.define-typography-level(
+      12px,
+      $font-family: $ff,
+      $font-weight: 700,
+      $line-height: 15px
+    ),
+  $body-2:
+    mat.define-typography-level(
+      11px,
+      $font-family: $ff,
+      $letter-spacing: -0.23px
+    ),
+  $button:
+    mat.define-typography-level(16px, $font-family: $ff, $font-weight: 700),
+);

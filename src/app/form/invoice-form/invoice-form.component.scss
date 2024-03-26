@@ -1,0 +1,99 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+@use "../../../styles/themes/palette";
+
+$custom-warning: mat.define-palette(palette.$md-custom-warning);
+$color: map.get($custom-warning, 500);
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.back-btn {
+  display: none;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 2.5rem);
+  &.tablet {
+    height: calc(100vh - 11rem);
+  }
+  &.mobile {
+    height: calc(100vh - 7rem);
+  }
+}
+
+.invoice-form {
+  overflow-y: scroll;
+  border-right: 1.5rem solid transparent;
+}
+
+.invoice-form,
+.buttons {
+  padding: 5.6rem 5.6rem 0;
+
+  &.mobile {
+    padding: 2.4rem;
+
+    .back-btn {
+      display: flex;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.hashTag {
+  color: palette.$theme-mode-colour;
+}
+
+.error-block {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  color: $color;
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 3rem;
+
+  button:first-child {
+    margin-right: auto;
+
+    &.cancel-btn {
+      margin-left: auto;
+      margin-right: inherit;
+      padding: 2rem;
+
+      &.mobile {
+        margin-left: inherit;
+      }
+    }
+  }
+
+  .save-changes-btn {
+    padding: 2rem;
+  }
+
+  button {
+    padding: 1.3rem;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}

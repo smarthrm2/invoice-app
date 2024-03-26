@@ -1,0 +1,10 @@
+<div
+  [ngClass]="{ paid: status === 'Paid', partial: status === 'Partial' }"
+  class="status-container"
+>
+  <div
+    [ngClass]="{ paid: status === 'Paid', partial: status === 'Partial' }"
+    class="bullet"
+  ></div>
+  <span class="status-text">{{ status }}</span>
+</div>

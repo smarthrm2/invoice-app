@@ -1,0 +1,51 @@
+<form
+  [formGroup]="form"
+  class="form-content"
+  (ngSubmit)="onSubmit()"
+>
+  <div
+    #invoiceForm
+    class="invoice-form"
+    (scroll)="onScroll()"
+  >
+    <button type="button" backButton class="back-btn" (click)="onGoBackClick()">
+      <mat-icon
+        fontIcon="keyboard_arrow_left"
+        class="btn-icon"
+        color="primary"
+      ></mat-icon
+      ><span>Go back</span>
+    </button>
+    <h2  class="heading">
+      {{ headerTxt }}
+    </h2>
+    <div>
+      <app-misc-info-form
+        formControlName="miscInfoForm"
+        [reset]="reset$"
+      ></app-misc-info-form>
+      <app-item-list-form
+        formControlName="itemListForm"
+        (addItemClicked)="scrollDown()"
+        [reset]="reset$"
+      ></app-item-list-form>
+      <ul class="error-block" role="list">
+        <li role="listitem" *ngFor="let error of errors">- {{ error }}</li>
+      </ul>
+    </div>
+  </div>
+  <div
+    #buttons
+    class="buttons shadow"
+  >
+    <ng-container >
+      <button type="button" pill-button="modify" (click)="onDiscardClick()">
+        Discard
+      </button>
+      <button pill-button="default" type="submit" [disabled]="form.invalid">
+        Save
+      </button>
+    </ng-container>
+  </div>
+</form>
+

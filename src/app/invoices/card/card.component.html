@@ -1,0 +1,21 @@
+<div *ngIf="cardData" class="inv-card">
+  <span class="id">
+    <span class="hashTag">#</span>{{ cardData.id | sortchars }}
+  </span>
+  <span class="dueDate">Due
+    {{
+    cardData.invoiceDate | date : "dd MMM y"
+    }}</span>
+  <span class="total">{{
+    cardData.items | convertItems | addnums | currency
+    }}</span>
+  <span class="status-block">
+    <app-status [status]="cardData.status"></app-status>
+  </span>
+  <a routerLink="detail" [queryParams]="{ id: cardData.id }"><mat-icon color="primary">visibility</mat-icon></a>
+  <a *ngIf="userType == UserTypeEnum.Admin" (click)="onEditClick(cardData.id)"><mat-icon>edit</mat-icon></a>
+  <a *ngIf="userType == UserTypeEnum.Admin" (click)="onDeleteBtnClick(cardData.id)"><mat-icon
+      color="warn">delete</mat-icon></a>
+
+
+</div>

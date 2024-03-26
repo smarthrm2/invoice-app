@@ -1,0 +1,22 @@
+<div class="paymentTerms" styledInput>
+  <label for="paymentTerms">Payment Type</label>
+  <div class="select-box">
+    <div class="options-container" [ngClass]="{ active: selectIsOpen }">
+      <div class="option" *ngFor="let term of paymentTypes">
+        <label>
+          <div>{{ term.label }}</div>
+          <input
+            type="radio"
+            class="radio"
+            name="term"
+            id="{{ term.label }}"
+            value="{{ term.value }}"
+            (click)="onPaymentTypeClick()"
+            (change)="onTypeChange($event)"
+          />
+        </label>
+      </div>
+    </div>
+    <div (click)="onPaymentTypeClick()" class="selected">{{ selectedPaymentType }}</div>
+  </div>
+</div>

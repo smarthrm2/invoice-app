@@ -1,0 +1,78 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+@use "../../../styles/themes/palette";
+$palette: mat.define-palette(palette.$md-custom-primary);
+$color: map.get($palette, 500);
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  &:not(.mobile) {
+    font-size: 3.2rem;
+  }
+}
+
+.sec-center {
+  position: relative;
+}
+.arrow {
+  color: $color;
+}
+
+.num-of-invoices {
+  letter-spacing: 0.25px;
+}
+
+.title,
+.num-of-invoices {
+  margin-bottom: 0;
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+button {
+  font-weight: 700;
+}
+
+:host {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  gap: 10px;
+}
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dropdown:checked + label,
+.dropdown:not(:checked) + label {
+  font-weight: 700;
+  font-size: 12px;
+  transition: all 200ms linear;
+  letter-spacing: 0.25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.text {
+  padding-top: 3px;
+}

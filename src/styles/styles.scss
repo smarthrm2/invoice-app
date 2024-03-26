@@ -1,0 +1,109 @@
+@use "@angular/material" as mat;
+@use "sass:map";
+@use "./themes/light";
+@use "./themes/dark";
+@use "./typography/config" as typography;
+@use "../styles/custom/directive-styles.theme" as directiveTheme;
+@use "../app/invoices/home/home.theme" as homeTheme;
+@use "../app/invoices/main-bar/main-bar.theme" as mainBarTheme;
+@use "../app/invoices/card/card.theme" as cardTheme;
+@use "../app/status/status.theme" as statusTheme;
+@use "../app//form/sub-forms/misc-info-form/select-payment-terms/select-payment-terms.theme"
+  as paymentTermsTheme;
+@use "../app/app.theme" as appTheme;
+@use "../app/detail//detail.theme" as detailTheme;
+@use "./themes/palette";
+@use "../app/invoices/custom-checkbox/custom-checkbox-theme" as
+  customCheckboxTheme;
+@use "./custom/directive-styles";
+@use "../app/detail/confirm-dialog/confirm-dialog-theme" as confirmDialogTheme;
+@use "../app/form/invoice-form/invoice-form.theme.scss" as invoiceFormTheme;
+@use "../app/form/sub-forms/item-list-form/item-list-form.theme" as
+  itemListFormTheme;
+
+@include mat.core();
+@include mat.typography-hierarchy(typography.$main-typography);
+
+.light-theme {
+  $color-config: mat.get-color-config(light.$invoice-light-theme);
+  $bg-palette: map.get($color-config, "background");
+  background-color: mat.get-color-from-palette($bg-palette, background);
+  @include mat.core-color(light.$invoice-light-theme);
+  @include mat.fab-theme(light.$invoice-light-theme);
+  @include mat.menu-theme(light.$invoice-light-theme);
+  @include mat.checkbox-theme(light.$invoice-light-theme);
+  @include mat.progress-spinner-theme(light.$invoice-light-theme);
+  @include mat.icon-theme(light.$invoice-light-theme);
+  @include mat.dialog-theme(light.$invoice-light-theme);
+  @include mat.sidenav-theme(light.$invoice-light-theme);
+  @include mat.datepicker-theme(light.$invoice-light-theme);
+  @include itemListFormTheme.theme(light.$invoice-light-theme);
+  @include directiveTheme.theme(light.$invoice-light-theme);
+  @include detailTheme.theme(light.$invoice-light-theme);
+  @include homeTheme.theme(light.$invoice-light-theme);
+  @include mainBarTheme.theme(light.$invoice-light-theme);
+  @include cardTheme.theme(light.$invoice-light-theme);
+  @include statusTheme.theme(light.$invoice-light-theme);
+  @include paymentTermsTheme.theme(light.$invoice-light-theme);
+  @include appTheme.theme(light.$invoice-light-theme);
+  @include customCheckboxTheme.theme(light.$invoice-light-theme);
+  @include confirmDialogTheme.theme(light.$invoice-light-theme);
+  @include invoiceFormTheme.theme(light.$invoice-light-theme);
+  color: palette.$fourth-colour-light-hover;
+}
+
+.dark-theme {
+  $color-config: mat.get-color-config(dark.$invoice-dark-theme);
+  $bg-palette: map.get($color-config, "background");
+  background-color: mat.get-color-from-palette($bg-palette, background);
+  @include mat.core-color(dark.$invoice-dark-theme);
+  @include mat.fab-theme(dark.$invoice-dark-theme);
+  @include mat.menu-theme(dark.$invoice-dark-theme);
+  @include mat.checkbox-theme(dark.$invoice-dark-theme);
+  @include mat.progress-spinner-theme(dark.$invoice-dark-theme);
+  @include mat.icon-theme(dark.$invoice-dark-theme);
+  @include mat.dialog-theme(dark.$invoice-dark-theme);
+  @include mat.sidenav-theme(dark.$invoice-dark-theme);
+  @include mat.datepicker-theme(dark.$invoice-dark-theme);
+  @include itemListFormTheme.theme(dark.$invoice-dark-theme);
+  @include directiveTheme.theme(dark.$invoice-dark-theme);
+  @include detailTheme.theme(dark.$invoice-dark-theme);
+  @include homeTheme.theme(dark.$invoice-dark-theme);
+  @include mainBarTheme.theme(dark.$invoice-dark-theme);
+  @include cardTheme.theme(dark.$invoice-dark-theme);
+  @include statusTheme.theme(dark.$invoice-dark-theme);
+  @include paymentTermsTheme.theme(dark.$invoice-dark-theme);
+  @include appTheme.theme(dark.$invoice-dark-theme);
+  @include customCheckboxTheme.theme(dark.$invoice-dark-theme);
+  @include confirmDialogTheme.theme(dark.$invoice-dark-theme);
+  @include invoiceFormTheme.theme(dark.$invoice-dark-theme);
+  color: palette.$white;
+}
+
+html,
+body {
+  min-width: 25rem;
+  height: 100%;
+  font-size: 62.5%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: "Spartan", sans-serif;
+}
+
+.status-group {
+  padding: 18px 72px 0 18px !important;
+}
+
+.dialog-popup {
+  &-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .mat-mdc-dialog-surface {
+    padding: 0;
+    box-shadow: none !important;
+  }
+}

@@ -1,0 +1,29 @@
+<app-loading></app-loading>
+<div>
+  <ng-container>
+    <app-main-bar></app-main-bar>
+    <div class="content-container">
+      <div class="cards">
+        <app-card @fade *ngFor="let invoice of invoices$ | async" [cardData]="{
+            id: invoice.id,
+            invoiceDate: invoice.invoiceDate,
+            paymentType: invoice.paymentType,
+            items: invoice.items,
+            status: invoice.status
+          }" class="card"></app-card>
+      </div>
+
+      <div *ngIf="(invoices$ | async)?.length === 0" class="empty-logo-container">
+        <img class="empty-logo" src="../../assets/illustration-empty.svg" alt="empty image" />
+        <div class="messages">
+          <p class="nothing-msg">There is nothing here</p>
+          <p>
+            Create an invoice by clicking the
+            <strong>New Invoice</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer></footer>
+  </ng-container>
+</div>

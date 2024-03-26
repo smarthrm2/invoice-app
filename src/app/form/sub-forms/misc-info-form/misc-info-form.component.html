@@ -1,0 +1,53 @@
+<form
+  class="form"
+  [formGroup]="miscInfoForm"
+>
+  <div class="invoiceDate" styledInput>
+    <label for="invoiceDate">Invoice Date</label>
+    <div class="input-container-date">
+      <input
+        [readonly]="true"
+        type="text"
+        size="5"
+        id="invoiceDate"
+        formControlName="invoiceDate"
+        [matDatepicker]="picker"
+        (blur)="onTouched()"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        class="date-picker-toggle"
+        [for]="picker"
+      ></mat-datepicker-toggle>
+    </div>
+    <mat-datepicker #picker></mat-datepicker>
+  </div>
+  <app-select-payment-terms
+    formControlName="paymentType"
+    class="paymentTerms"
+  ></app-select-payment-terms>
+<!-------------------->
+<div class="paymentTerms" styledInput>
+  <label for="paymentTerms">Payment Status</label>
+  <div class="select-box">
+    <div class="options-container" [ngClass]="{ active: selectIsOpen }">
+      <div class="option" *ngFor="let term of paymentStatus">
+        <label>
+          <div>{{ term.label }}</div>
+          <input
+            type="radio"
+            class="radio"
+            name="term"
+            id="{{ term.label }}"
+            value="{{ term.value }}"
+            (click)="onPaymentTypeClick()"
+            (change)="onTypeChange($event)"
+          />
+        </label>
+      </div>
+    </div>
+    <div (click)="onPaymentTypeClick()" class="selected">{{ miscInfoForm?.controls['paymentStatus']?.value }}</div>
+  </div>
+</div>
+
+</form>
